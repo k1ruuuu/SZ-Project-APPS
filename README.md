@@ -1,6 +1,3 @@
-Saya akan melanjutkan dari bagian yang Anda berikan. Berikut adalah kode README.md lengkap dari bagian yang Anda potong:
-
-```markdown
 # SZ Project 🚀
 
 <p align="center">
@@ -359,7 +356,6 @@ Project ini dilisensikan di bawah **GNU General Public License v3.0**.
 <p align="center">
   <a href="#sz-project-">Kembali ke Atas ↑</a>
 </p>
-```
 
 ## Cara Menggunakan:
 
@@ -372,5 +368,3 @@ Project ini dilisensikan di bawah **GNU General Public License v3.0**.
    - Ganti `com.szproject.app` dengan package name aplikasi Anda
    - Update link kontak (Telegram, Discord, Email) dengan yang asli
    - Buat folder `screenshots` dan isi dengan screenshot aplikasi
-
-README.md ini sudah lengkap dan siap digunakan! 🚀
