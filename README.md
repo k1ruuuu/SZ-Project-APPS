@@ -356,15 +356,3 @@ Project ini dilisensikan di bawah **GNU General Public License v3.0**.
 <p align="center">
   <a href="#sz-project-">Kembali ke Atas ↑</a>
 </p>
-
-## Cara Menggunakan:
-
-1. **Copy semua kode di atas** (dari awal sampai akhir)
-2. **Buat file** `README.md` di root repository Anda
-3. **Paste kode tersebut**
-4. **Sesuaikan** dengan project Anda:
-   - Ganti `https://via.placeholder.com/200x200.png?text=SZ+Project` dengan logo asli
-   - Ganti semua `SZProject` dengan username GitHub Anda
-   - Ganti `com.szproject.app` dengan package name aplikasi Anda
-   - Update link kontak (Telegram, Discord, Email) dengan yang asli
-   - Buat folder `screenshots` dan isi dengan screenshot aplikasi
