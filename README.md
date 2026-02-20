@@ -1,3 +1,6 @@
+Saya akan melanjutkan dari bagian yang Anda berikan. Berikut adalah kode README.md lengkap dari bagian yang Anda potong:
+
+```markdown
 # SZ Project 🚀
 
 <p align="center">
@@ -36,6 +39,7 @@
 - [Kontribusi](#kontribusi)
 - [Lisensi](#lisensi)
 - [Kontak](#kontak)
+- [Disclaimer](#disclaimer)
 
 ---
 
@@ -135,3 +139,238 @@ adb install app-release.apk
 
 # Grant permissions manually (jika perlu)
 adb shell pm grant com.szproject.app android.permission.WRITE_SECURE_SETTINGS
+adb shell pm grant com.szproject.app android.permission.READ_LOGS
+adb shell pm grant com.szproject.app android.permission.DUMP
+```
+
+---
+
+## 🔨 Cara Build dari Source
+
+### Prasyarat
+
+| Tools | Version Minimal | Link Download |
+|-------|-----------------|---------------|
+| **Android Studio** | Arctic Fox (2020.3.1) | [Download](https://developer.android.com/studio) |
+| **JDK** | 11 | [Download](https://adoptium.net/) |
+| **Git** | 2.25 | [Download](https://git-scm.com/) |
+| **Android SDK** | API 33 | (Include di Android Studio) |
+| **Gradle** | 7.0.2 | (Include di project) |
+
+### Langkah-langkah Build
+
+#### 1. Clone Repository
+```bash
+# Clone dengan HTTPS
+git clone https://github.com/SZProject/app.git
+
+# Clone dengan SSH
+git clone git@github.com:SZProject/app.git
+
+# Masuk ke direktori
+cd app
+```
+
+#### 2. Setup Local Properties
+```bash
+# Linux/Mac
+echo "sdk.dir=$HOME/Android/Sdk" > local.properties
+
+# Windows (Command Prompt)
+echo sdk.dir=C:\\Users\\%USERNAME%\\AppData\\Local\\Android\\Sdk > local.properties
+```
+
+#### 3. Build Debug APK
+```bash
+# Linux/Mac
+chmod +x gradlew
+./gradlew clean assembleDebug
+
+# Windows
+gradlew.bat clean assembleDebug
+```
+
+#### 4. Build Release APK
+```bash
+# Generate keystore (jika belum punya)
+keytool -genkey -v -keystore release.keystore -alias szproject -keyalg RSA -keysize 2048 -validity 10000
+
+# Build release
+./gradlew clean assembleRelease
+```
+
+#### 5. Lokasi Hasil Build
+```
+Debug APK: app/build/outputs/apk/debug/app-debug.apk
+Release APK: app/build/outputs/apk/release/app-release.apk
+```
+
+### Build Variants
+```bash
+# Build semua variant
+./gradlew assemble
+
+# Install langsung ke device
+./gradlew installDebug
+./gradlew installRelease
+```
+
+### Troubleshooting Build
+
+| Error | Solusi |
+|-------|--------|
+| `SDK location not found` | Buat file local.properties dengan path SDK yang benar |
+| `Java home not set` | Install JDK 11 dan set `JAVA_HOME` |
+| `Permission denied` | `chmod +x gradlew` di Linux/Mac |
+| `Shizuku API not found` | `./gradlew clean` lalu build ulang |
+
+---
+
+## 📁 Struktur Project
+
+```
+SZProject/
+├── app/                                      # Module aplikasi utama
+│   ├── src/
+│   │   ├── main/
+│   │   │   ├── java/com/szproject/
+│   │   │   │   ├── ui/                       # UI Components
+│   │   │   │   ├── core/                      # Core logic
+│   │   │   │   ├── tweaks/                    # Performance tweaks
+│   │   │   │   ├── touch/                      # Touch sensitivity
+│   │   │   │   ├── game/                        # Game hijack
+│   │   │   │   └── utils/                       # Utility classes
+│   │   │   ├── res/                            # Resources
+│   │   │   └── AndroidManifest.xml
+│   │   ├── test/                                # Unit tests
+│   │   └── androidTest/                         # Instrumentation tests
+│   ├── build.gradle                             # App module gradle
+│   └── proguard-rules.pro                        # ProGuard rules
+├── libraries/                                    # Library modules
+│   ├── shizuku-api/                              # Shizuku API wrapper
+│   └── common-utils/                             # Shared utilities
+├── gradle/wrapper/                                # Gradle wrapper
+├── docs/                                          # Documentation
+├── .github/                                       # GitHub config
+├── .gitignore                                     # Git ignore rules
+├── LICENSE                                        # GPL-3.0 License
+├── README.md                                      # This file
+├── build.gradle                                   # Project gradle
+├── gradle.properties                              # Gradle properties
+├── gradlew                                        # Gradle wrapper (Linux/Mac)
+├── gradlew.bat                                    # Gradle wrapper (Windows)
+└── settings.gradle                                # Project settings
+```
+
+---
+
+## 🤝 Kontribusi
+
+Kami sangat terbuka untuk kontribusi! Berikut caranya:
+
+### Cara Berkontribusi
+1. **Fork repository** ini
+2. **Buat branch baru** untuk fitur Anda
+   ```bash
+   git checkout -b fitur-keren-anda
+   ```
+3. **Commit perubahan** Anda
+   ```bash
+   git commit -m "feat: menambahkan fitur baru"
+   ```
+4. **Push ke branch**
+   ```bash
+   git push origin fitur-keren-anda
+   ```
+5. **Buat Pull Request** ke branch `main`
+
+### Pedoman Kontribusi
+- ✅ Ikuti coding style yang ada
+- ✅ Tambahkan komentar untuk kode kompleks
+- ✅ Update dokumentasi jika diperlukan
+- ✅ Test di minimal 2 device berbeda
+
+---
+
+## 📄 Lisensi
+
+```
+Copyright (C) 2024 SZ Project
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+```
+
+Project ini dilisensikan di bawah **GNU General Public License v3.0**.
+
+---
+
+## 📬 Kontak
+
+| Platform | Link |
+|----------|------|
+| **GitHub** | [@SZProject](https://github.com/SZProject) |
+| **Telegram** | [t.me/szproject](https://t.me/szproject) |
+| **Discord** | [SZ Project Community](https://discord.gg/szproject) |
+| **Email** | [szproject@email.com](mailto:szproject@email.com) |
+
+### Report Bug / Saran Fitur
+- Buat [Issue baru](https://github.com/SZProject/app/issues)
+
+---
+
+## ⚠️ Disclaimer
+
+**Peringatan Penting:**
+1. **Penggunaan Aplikasi**
+   - Aplikasi ini menggunakan akses Shizuku yang dapat mengubah pengaturan sistem
+   - Gunakan dengan bijak dan pahami risiko yang ada
+   - Kami tidak bertanggung jawab atas kerusakan yang disebabkan oleh penggunaan yang tidak tepat
+
+2. **Fitur Hijack Game**
+   - Hanya untuk game OFFLINE / SINGLE PLAYER
+   - Jangan gunakan untuk game online/multiplayer
+   - Penggunaan untuk game online dapat mengakibatkan banned account
+
+3. **Kompatibilitas Device**
+   - Tidak semua fitur bekerja di semua device
+   - Performa dapat bervariasi tergantung device
+
+4. **Data Privacy**
+   - Aplikasi ini TIDAK mengumpulkan data pribadi
+   - Semua konfigurasi disimpan lokal di device
+
+---
+
+<p align="center">
+  Made with ❤️ by SZ Project Team
+</p>
+
+<p align="center">
+  <a href="#sz-project-">Kembali ke Atas ↑</a>
+</p>
+```
+
+## Cara Menggunakan:
+
+1. **Copy semua kode di atas** (dari awal sampai akhir)
+2. **Buat file** `README.md` di root repository Anda
+3. **Paste kode tersebut**
+4. **Sesuaikan** dengan project Anda:
+   - Ganti `https://via.placeholder.com/200x200.png?text=SZ+Project` dengan logo asli
+   - Ganti semua `SZProject` dengan username GitHub Anda
+   - Ganti `com.szproject.app` dengan package name aplikasi Anda
+   - Update link kontak (Telegram, Discord, Email) dengan yang asli
+   - Buat folder `screenshots` dan isi dengan screenshot aplikasi
+
+README.md ini sudah lengkap dan siap digunakan! 🚀
